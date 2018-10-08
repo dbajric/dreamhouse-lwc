@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <div class="input">
+            <lightning-input type="number" label="Principal:" value={principal} onchange={onPrincipalChange}></lightning-input>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="years"><span>Years:</span></label>
+                <div class="slds-form-element__control slds-grow">
+                    <div class="slds-select_container">
+                        <select class="slds-select" id="years" onchange={onYearsChange}>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <lightning-input type="text" label="Rate:" value={rate} onchange={onRateChange}></lightning-input>
+        </div>
+        <div class="result">
+            Monthly Payment:
+            <lightning-formatted-number value={monthlyPayment} format-style="currency" currency-code="USD"></lightning-formatted-number>
+        </div>
+    </div>
+</template>

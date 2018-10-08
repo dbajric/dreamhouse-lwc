@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-grid">
+            <div class={daysBlockClass}>
+                <div class="days">{daysOnMarket}</div>days on<br />the market
+            </div>
+            <div class="chart slds-grow">
+                <div class={barClass} style={barStyle}></div>
+                <div class="axis">
+                    <div><div class="legend">{formattedDateListed}</div></div>
+                    <div><div class="legend">30 days</div></div>
+                    <div><div class="legend">60 days</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

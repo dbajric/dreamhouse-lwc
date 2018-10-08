@@ -1,0 +1,15 @@
+:host {
+    width: 100%;
+}
+
+.leaflet-container {
+    height: 550px;
+}
+
+.slds-card__header {
+    display: none;
+}
+
+.slds-card__body {
+    margin-bottom: 0;
+}

@@ -1,0 +1,15 @@
+<template>
+    <header class="flexipageHeader slds-page-header uiBlock oneAnchorHeader">
+        <div class="bLeft">
+            <div class="small forceEntityIcon" style="background-color: #4fbe75">
+                <span class="uiImage">
+                    <img src={iconUrl} class="icon" />
+                </span>
+            </div>
+        </div>
+        <div class="bRight"><!-- workaround for W-2413659, remove once that bug is fixed --></div>
+        <div class="bBody">
+            <h2 class="truncate">{title}</h2>
+        </div>
+    </header>
+</template>

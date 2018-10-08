@@ -1,0 +1,10 @@
+.property-pic {
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 4px;
+}
+
+.row {
+    margin-bottom: 6px;
+}

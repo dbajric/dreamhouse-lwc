@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable">
+    <div class="oneFlexipage">
+        <c:property_explorer_page />
+    </div>
+</aura:component>

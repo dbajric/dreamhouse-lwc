@@ -1,0 +1,13 @@
+<template>
+    <a onclick={handlePropertySelectedClick}>
+        <div class="tile" style={backgroundImageStyle}>
+            <div class="lower-third">
+                <h1 class="truncate">{property.Address__c}</h1>
+                <div>{property.City__c}</div>
+                <div>Beds: {property.Beds__c}&nbsp;&nbsp;&nbsp;Baths: {property.Baths__c}</div>
+                <div><lightning-formatted-number format-style="currency" currency-code="USD" value={property.Price__c}></lightning-formatted-number></div>
+            </div>
+            <lightning-button-icon onclick={handleViewPropertyClick} icon-name="utility:zoomin" variant="bare-inverse" size="medium" class="open-button"></lightning-button-icon>
+        </div>
+    </a>
+</template>

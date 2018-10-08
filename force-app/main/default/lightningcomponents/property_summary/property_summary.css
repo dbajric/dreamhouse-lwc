@@ -1,0 +1,22 @@
+.property-pic {
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 4px;
+}
+
+.broker-pic {
+    height: 70px;
+    width: 70px;
+    border-radius: 4px;
+    border: none;
+}
+
+.select {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.slds-card {
+    min-height: 226px;
+}

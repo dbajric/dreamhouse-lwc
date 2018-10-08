@@ -1,0 +1,15 @@
+<template>
+    <div class="container">
+        <div class="left">
+            <template if:true={showPreviousButton}>
+                <lightning-button-icon icon-name="utility:left" variant="border" onclick={previousPage}></lightning-button-icon>
+            </template>
+        </div>
+        <div class="centered">{total} properties • page {currentPage} of {totalPages}</div>
+        <div class="right">
+            <template if:true={showNextButton}>
+                <lightning-button-icon icon-name="utility:right" variant="border" onclick={nextPage}></lightning-button-icon>
+            </template>
+        </div>
+	</div>
+</template>

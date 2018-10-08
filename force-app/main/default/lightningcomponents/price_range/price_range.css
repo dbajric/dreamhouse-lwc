@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    margin-top: 6px;
+}
+
+.slider {
+    margin: 30px 6px 12px 16px;
+    max-width: 350px;
+}

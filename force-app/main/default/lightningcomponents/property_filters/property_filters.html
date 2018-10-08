@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Filters" icon-name="utility:rating" boundary>
+        <div slot="actions">
+            <lightning-button label="Reset" onclick={onResetFilters}></lightning-button>
+        </div>
+
+        <div class="filters">
+            <lightning-input label="Search" onchange={onSearchKeyChange} value={searchKey}></lightning-input>
+            <c-price_range min={minPrice} max={maxPrice} step={step} onchange={onPriceRangeChange}></c-price_range>
+            <lightning-slider label="Bedrooms" step="1" min="0" max="6" value={minBedrooms} onchange={onMinBedroomsChange}></lightning-slider>
+            <lightning-slider label="Bathrooms" step="1" min="0" max="6" value={minBathrooms} onchange={onMinBathroomsChange}></lightning-slider>
+            <c-visual_search_box modelid={einsteinVisionModelId} onprediction={onPrediction}></c-visual_search_box>
+        </div>
+    </lightning-card>
+</template>
