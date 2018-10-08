@@ -1,0 +1,19 @@
+:host {
+    padding: 4px 0;
+}
+
+.slds-form-element__label {
+    display: none;
+}
+
+.audio-icon {
+    margin: 0 4px;
+}
+
+.slds-icon-eq {
+    margin: 0 6px;
+}
+
+.voice-input {
+    color: initial;
+}

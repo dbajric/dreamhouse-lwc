@@ -1,0 +1,29 @@
+<template>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th class="principal">Principal</th>
+                <th class="stretch"></th>
+                <th class="interest">Interest</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={amortization} for:item="item">
+                <tr key={item}>
+                    <td>{item.year}</td>
+                    <td class="principal"><lightning-formatted-number value={item.principalY} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                    <td class="stretch">
+                        <div class="flex">
+                            <div class="bar principal" style={item.principalStyle}></div>
+                            <div class="bar interest" style={item.interestStyle}></div>
+                        </div>
+                    </td>
+                    <td class="interest"><lightning-formatted-number value={item.interestY} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                    <td><lightning-formatted-number value={item.balance} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>

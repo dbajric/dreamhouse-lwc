@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout vertical-align="center">
+        <lightning-layout-item flexibility="grow">
+            <input type="text" class="slds-input voice-input" value={utterance} placeholder="How can I assist you?" onkeypress={onKeyPress} />
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <div class="audio-icon">
+                <template if:true={talking}>
+                    <div class="slds-icon-eq slds-is-animated" title="Description of the icon when needed">
+                        <div class="slds-icon-eq__bar"></div>
+                        <div class="slds-icon-eq__bar"></div>
+                        <div class="slds-icon-eq__bar"></div>
+                        <span class="slds-assistive-text">Text alternative when needed</span>
+                    </div>
+                </template>
+                <template if:false={talking}>
+                    <lightning-button-icon icon-name="utility:unmuted" variant="bare" size="large" onclick={onTalk}></lightning-button-icon>
+                </template>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

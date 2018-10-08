@@ -1,0 +1,58 @@
+:host {
+	margin: 8px;
+    border-collapse: collapse;
+    font-weight: light;
+    font-size: 14px;
+}
+td {
+    font-family: menlo;
+	font-weight: 300;
+}
+
+.principal {
+    color: #0288D1;
+}
+
+.interest {
+    color: #EF6C00;
+}
+
+th {
+    text-align: right;
+    font-weight: 600;
+}
+
+th,
+td {
+    text-align: right;
+    border: solid 1px #EEEEEE !important;
+    padding: 1px 4px;
+	vertical-align: middle;
+}
+
+.bar {
+    display: inline-block;
+    border: none;
+    height: 8px;
+}
+
+.bar.principal {
+    background-color: #0288D1;
+    margin-right:1px;
+}
+
+.bar.interest {
+    background-color: #EF6C00;
+    margin-left:1px;
+}
+
+.stretch {
+    width: 100%;
+    padding-left:0;
+    padding-right:0;
+}
+
+.flex {
+    display: -webkit-flex;
+    display: flex;
+}

@@ -1,0 +1,71 @@
+:host > div {
+    margin-top: 8px;
+    position: relative;
+}
+
+td {
+	padding: 2px;
+}
+
+.probability {
+	padding-right: 4px;
+    text-align: right;
+}
+
+table {
+    display: block;
+    width: 100%;
+}
+
+tr {
+    border-top: 1px dashed rgb(216, 221, 230);
+    width: 100%;
+}
+
+.slds-grid > div {
+    padding: 2px 3px 0 3px;
+    font-size: 12px;
+    border-bottom: 1px dashed rgb(216, 221, 230);
+}
+
+.frame {
+    width: 100%;
+    min-height: 80px;
+    line-height: 80px;
+    border: 1px dashed rgb(216, 221, 230);
+    padding: 4px;
+    text-align: center;
+    position: relative;
+}
+
+.upload-btn {
+    width: 100%;
+    margin: 0 0 4px 0;
+}
+
+.upload-btn svg {
+    fill: #1F539C;
+    margin-right: 1px;
+}
+
+.drop-message {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+input[type=file] {
+    cursor: pointer;
+    display: block;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}

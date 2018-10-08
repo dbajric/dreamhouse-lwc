@@ -1,0 +1,29 @@
+<template>
+    <div>
+        <p class="slds-form-element__label">Visual search</p>
+
+        <button class="slds-button slds-button_neutral upload-btn">
+            <lightning-icon icon-name="utility:upload" size="xx-small"></lightning-icon> Upload Picture
+            <input type="file" accept="image/*" onchange={onFileChange} />
+        </button>
+
+        <div class="frame" ondragover={onDragOver} ondrop={onDrop}>
+            <p if:false={hasPicture} class="drop-message slds-text-color--weak">or drop picture here</p>
+            <img src={pictureSrc} />
+        </div>
+
+        <template for:each={predictions} for:item="prediction">
+            <lightning-layout key={prediction.id}>
+                <lightning-layout-item>
+                    <lightning-icon icon-name="utility:preview" size="x-small"></lightning-icon>
+                </lightning-layout-item>
+                <lightning-layout-item>{prediction.formattedProbability}</lightning-layout-item>
+                <lightning-layout-item flexibility="grow">{prediction.label}</lightning-layout-item>
+            </lightning-layout>
+        </template>
+
+        <div if:true={waiting}>
+            <lightning-spinner size="large"></lightning-spinner>
+        </div>
+    </div>
+</template>
