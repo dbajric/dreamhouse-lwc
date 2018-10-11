@@ -1,0 +1,17 @@
+<template>
+    <c-page-header title="Property Explorer" icon-name="custom39"></c-page-header>
+    <lightning-layout class="pageBody">
+        <lightning-layout-item size="2">
+            <c-property-filters></c-property-filters>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" class="center">
+            <div class="flexipageComponent"><c-voice-input-card></c-voice-input-card></div>
+            <div class="flexipageComponent"><c-property-list-map></c-property-list-map></div>
+        </lightning-layout-item>
+        <lightning-layout-item size="4">
+            <div class="flexipageComponent"><c-property-summary></c-property-summary></div>
+            <div class="flexipageComponent"><c-property-days-on-market-chart></c-property-days-on-market-chart></div>
+            <div class="flexipageComponent"><c-similar-properties></c-similar-properties></div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

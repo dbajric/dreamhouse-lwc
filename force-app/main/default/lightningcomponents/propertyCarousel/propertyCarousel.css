@@ -1,0 +1,39 @@
+:host {
+    padding: 4px;
+}
+
+.slds-card__body {
+    text-align: center;
+    margin-bottom: 0;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+
+.slds-carousel__content {
+     display: none;
+}
+
+.slds-carousel__autoplay {
+    display: none;
+}
+
+lightning-file-upload .slds-form-element__label {
+    display: none;
+}
+
+.card-content {
+    padding: 8px;
+    text-align: center;
+}
+
+.slds-carousel__image {
+	border-top-left-radius: .25rem;
+	border-top-right-radius: .25rem;
+}
+
+/*
+TODO:
+.slds-file-selector,
+lightning-primitive-file-droppable-zone {
+    width: 100%;
+} */

@@ -59,7 +59,7 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>mortgage_calculator_with_amortization</componentName>
+            <componentName>mortgageCalculatorWithAmortization</componentName>
         </componentInstances>
         <name>facet-10e2e3cd-2f87-49df-8e5d-58d632b4c7d3</name>
         <type>Facet</type>
@@ -131,25 +131,13 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentInstanceProperties>
-                <name>latField</name>
-                <value>Location__Latitude__s</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>longField</name>
-                <value>Location__Longitude__s</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>titleField</name>
-                <value>Name</value>
-            </componentInstanceProperties>
-            <componentName>MapCard</componentName>
+            <componentName>mapCard</componentName>
         </componentInstances>
         <componentInstances>
-            <componentName>PropertyCarousel</componentName>
+            <componentName>propertyCarousel</componentName>
         </componentInstances>
         <componentInstances>
-            <componentName>similar_properties</componentName>
+            <componentName>similarProperties</componentName>
         </componentInstances>
         <mode>Replace</mode>
         <name>sidebar</name>

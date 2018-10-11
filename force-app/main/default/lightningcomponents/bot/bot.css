@@ -1,0 +1,63 @@
+:host {
+    position: relative;
+	box-sizing: border-box;
+    overflow: hidden !important;
+}
+
+:host>.content {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    overflow: scroll;
+}
+
+:host>.footer {
+	position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+:host>.author {
+    font-weight: bold;
+}
+
+.container {
+    height: 500px;
+}
+
+dl {
+    padding: 4px 0 4px 0;
+    border-bottom: solid 1px #f4f6f9;
+}
+
+.list-item {
+	margin: 4px 0 4px 0;
+    border-bottom: solid 1px #f4f6f9;
+}
+
+.slds-post {
+    border-top: none !important;
+}
+
+.message-button {
+    display: block;
+    width:100%;
+    margin-top: 4px;
+    margin-left: 0;
+}
+
+.slds-form-element__label {
+    display: none;
+}
+
+.slds-file-selector {
+    margin-top: 4px;
+    width: 100% !important;
+}
+
+.slds-file-selector__dropzone {
+    width: 100% !important;
+}

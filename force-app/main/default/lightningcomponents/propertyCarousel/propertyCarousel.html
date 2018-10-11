@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title={property.Name} icon-name="custom:custom38">
+        <template if:true={hasFiles}>
+            <lightning-carousel disable-auto-refresh="true">
+                <template for:each={files} for:item="file">
+                    <lightning-carousel-image key={file} src={file.src}></lightning-carousel-image>
+                </template>
+            </lightning-carousel>
+        </template>
+
+        <template if:false={hasFiles}>
+            <div class="card-content">
+                <lightning-icon icon-name="utility:photo" size="medium" class="slds-align_absolute-center"></lightning-icon>
+                <p class="slds-text-color--weak">There are currently no pictures for this property.</p>
+            </div>
+        </template>
+
+        <div class="card-content">
+            <lightning-file-upload label="Add picture" accept=".jpg, .png, .gif" record-id={recordId} onuploadfinished={onUploadFinished} multiple></lightning-file-upload>
+        </div>
+    </lightning-card>
+</template>

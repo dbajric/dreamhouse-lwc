@@ -1,0 +1,58 @@
+<template>
+    <div class="container slds-p-vertical--x-small">
+        <div class="content">
+            <template for:each={messages} for:item="message">
+                <lightning-layout key={message}>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-icon icon-name={message.icon} size="small"></lightning-icon>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" flexibility="grow">
+                            <p><strong>{message.author}</strong></p>
+                            <p class="slds-text-body">{message.messageText}</p>
+
+                            <figure if:true={message.hasImageURL} class="slds-image slds-image--card slds-m-top--x-small">
+                                <img src={message.imageURL} />
+                            </figure>
+
+                            <template for:each={message.buttons} for:item="button">
+                                <lightning-button key={button} label={button.label} name={button.value} onclick={postbackButtonClickHandler} class="message-button"></lightning-button>
+                            </template>
+
+                            <template for:each={message.records} for:item="record">
+                                <dl key={record} class="slds-list--horizontal slds-wrap">
+                                    <template for:each={record.fields} for:item="field">
+                                        <dt key={field} class="slds-item--label slds-text-color--weak slds-truncate">{field.name}:</dt>
+                                        <dd key={field} class="slds-item--detail slds-truncate">
+                                            <template if:true={field.hasLinkURL}>
+                                                <a href={field.linkURL}>{field.value}</a>
+                                            </template>
+                                            <template if:false={field.hasLinkURL}>
+                                                {field.value}
+                                            </template>
+                                        </dd>
+                                    </template>
+                                </dl>
+                            </template>
+
+                            <template for:each={message.items} for:item="item">
+                                <div key={item}>Temp. TODO: remove once you figure out the key</div>
+                                <template if:true={field.hasLinkURL}>
+                                    <div key={item} class="list-item"><a href={item.linkURL} target="_blank">{item.name}</a></div>
+                                </template>
+                                <template if:false={field.hasLinkURL}>
+                                    <div key={item} class="list-item">{item.name}</div>
+                                </template>
+                            </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+        </div>
+
+        <div class="footer slds-form-element slds-p-horizontal--x-small">
+            <div class="slds-form-element__control">
+                <c-voice-input onchange={onUtteranceChange}></c-voice-input>
+            </div>
+        </div>
+    </div>
+</template>

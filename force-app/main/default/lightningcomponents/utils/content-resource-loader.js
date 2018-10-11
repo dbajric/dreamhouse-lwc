@@ -7,26 +7,26 @@ function findScriptByUrl(doc, url) {
 }
 
 function createStyle(doc, url) {
-  const link = doc.createElement('link');
+  const link = doc.createElement("link");
   link.href = url;
-  link.charset = 'utf-8';
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
+  link.charset = "utf-8";
+  link.type = "text/css";
+  link.rel = "stylesheet";
   return link;
 }
 
 function createScript(doc, url) {
-  const script = doc.createElement('script');
+  const script = doc.createElement("script");
   script.src = url;
-  script.charset = 'utf-8';
-  script.type = 'text/javascript';
+  script.charset = "utf-8";
+  script.type = "text/javascript";
   return script;
 }
 
 function promiseStyle(doc, link, skipload) {
   return new Promise(function(resolve, reject) {
-    link.addEventListener('load', resolve);
-    link.addEventListener('onerror', err => {
+    link.addEventListener("load", resolve);
+    link.addEventListener("onerror", err => {
       err.stopPropagation();
       reject(link.href, err.message);
     });
@@ -38,8 +38,8 @@ function promiseStyle(doc, link, skipload) {
 
 function promiseScript(doc, script, skipload) {
   return new Promise(function(resolve, reject) {
-    script.addEventListener('load', resolve);
-    script.addEventListener('onerror', err => {
+    script.addEventListener("load", resolve);
+    script.addEventListener("onerror", err => {
       err.stopPropagation();
       reject(script.src, err.message)
     });

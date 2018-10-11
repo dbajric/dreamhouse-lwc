@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title={title} icon-name="custom:custom90">
+        <template for:each={properties} for:item="property">
+                <lightning-layout key={property.Id} vertical-align="center" class="row">
+                        <lightning-layout-item padding="horizontal-small">
+                            <img src={property.Thumbnail__c} class="property-pic" />
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <div>
+                                <lightning-formatted-address street={property.Address__c} city={property.City__c} province={property.State__c} postal-code={property.Zip__c}></lightning-formatted-address>
+                                <p>Beds: {property.Beds__c} Baths: {property.Baths__c}</p>
+                                <p><lightning-formatted-number value={property.Price__c} style="currency" currency-code="USD" minimum-fraction-digits="0" maximum-fraction-digits="0"></lightning-formatted-number></p>
+                            </div>
+                        </lightning-layout-item>
+                </lightning-layout>
+        </template>
+    </lightning-card>
+</template>

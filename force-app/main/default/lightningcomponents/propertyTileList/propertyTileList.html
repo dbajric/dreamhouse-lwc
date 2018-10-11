@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-card">
+        <lightning-layout horizontal-align="center" multiple-rows="true">
+            <template for:each={properties} for:item="property">
+                <lightning-layout-item key={property.Id} padding="around-small" size="12" small-device-size="6" medium-device-size="4" large-device-size="3">
+                    <c-property-tile property={property} key={property.Id}></c-property-tile>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+
+        <c-property-paginator page={page} pages={pages} total={total}></c-property-paginator>
+    </div>
+</template>
