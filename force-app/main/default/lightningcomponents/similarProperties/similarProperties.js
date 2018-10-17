@@ -1,5 +1,5 @@
 import { LightningElement, track } from "lwc";
-//TODOimport getSimilarProperties from "@salesforce/apex/PropertyController.getSimilarProperties";
+import getSimilarProperties from "@salesforce/apex/PropertyController.getSimilarProperties";
 
 export default class SimilarProperties extends LightningElement {
     @track properties;
@@ -35,12 +35,11 @@ export default class SimilarProperties extends LightningElement {
             searchCriteria: ""
         };
 
-        //TODO
-        // // Get properties from the server
-        // getSimilarProperties(filters).then(response => {
-        //     this.properties = response;
-        // }).catch(() => {
-        //     //TODO: implement error handling
-        // });
+        // Get properties from the server
+        getSimilarProperties(filters).then(response => {
+            this.properties = response;
+        }).catch(() => {
+            //TODO: implement error handling
+        });
     }
 }

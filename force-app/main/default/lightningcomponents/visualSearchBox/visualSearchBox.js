@@ -35,7 +35,7 @@ export default class VisualSearchBox extends LightningElement {
     readFile(file) {
         if (file.type.match(/(image.*)/)) {
             this.hasPicture = false;
-            var reader = new FileReader();
+            let reader = new FileReader();
             reader.onloadend = function () {
                 let dataURL = reader.result;
                 this.simulateUpload(file, dataURL);

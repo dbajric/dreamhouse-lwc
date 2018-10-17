@@ -1,16 +1,16 @@
 global with sharing class PropertyController {
 
     @AuraEnabled(Cacheable=true)
-    public static Property__c[] getPropertyList(String searchKey, Decimal minPrice, Decimal maxPrice, Integer numberBedrooms, Integer numberBathrooms, String visualSearchKey) {
+    public static Property__c[] getPropertyList(String searchKey, Decimal minPrice, Decimal maxPrice, Integer minBedrooms, Integer minBathrooms, String visualSearchKey) {
         String key = '%' + searchKey + '%';
         String visualKey = '%' + visualSearchKey + '%';
-        return [SELECT Id, address__c, city__c, state__c, description__c, price__c, baths__c, beds__c, thumbnail__c, location__latitude__s, location__longitude__s FROM property__c
+        return [SELECT Id, address__c, city__c, state__c, zip__c, description__c, price__c, baths__c, beds__c, thumbnail__c, location__latitude__s, location__longitude__s, Days_On_Market__c, Date_Listed__c, broker__r.Name, broker__r.Title__c, broker__r.Id, broker__r.Mobile_Phone__c, broker__r.Email__c, broker__r.Picture__c FROM property__c
                       WHERE (title__c LIKE :key OR city__c LIKE :key OR tags__c LIKE :key)
                       AND (title__c LIKE :visualKey OR city__c LIKE :visualKey OR tags__c LIKE :visualKey)
                       AND price__c >= :minPrice
 					  AND price__c <= :maxPrice
-                      AND beds__c >= :numberBedrooms
-                      AND baths__c >= :numberBathrooms
+                      AND beds__c >= :minBedrooms
+                      AND baths__c >= :minBathrooms
                       ORDER BY price__c LIMIT 100];
     }
 

@@ -46,11 +46,13 @@ export default class PropertyListMap extends LightningElement {
 
         // Draw the map if it hasn't been drawn yet
         if (!this.map) {
-            // TODO: FIX!!!!
-            let container = this.template.querySelector("#container");
+            const container = document.createElement("div");
+            container.style.height = "550px";
+            this.template.querySelector("div").appendChild(container);
+
             this.map = L.map(container, {zoomControl: true}).setView([42.356045, -71.085650], 13);
             this.map.scrollWheelZoom.disable();
-            window.L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles © Esri'}).addTo(this.map);
+            window.L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", { attribution: "Tiles © Esri" }).addTo(this.map);
         }
 
         if (this.center && this.center.lat && this.center.long) {
@@ -66,22 +68,23 @@ export default class PropertyListMap extends LightningElement {
             return;
         }
 
-        var markers = [];
+        let markers = [];
+        const _this = this;
         properties.forEach(function(property) {
-            var latLng = [property.Location__Latitude__s, property.Location__Longitude__s];
-            var myIcon = L.divIcon({
-                className: 'my-div-icon',
+            let latLng = [property.Location__Latitude__s, property.Location__Longitude__s];
+            let myIcon = L.divIcon({
+                className: "my-div-icon",
                 html: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 52 52"><path fill="#DB4437" d="m26 2c-10.5 0-19 8.5-19 19.1 0 13.2 13.6 25.3 17.8 28.5 0.7 0.6 1.7 0.6 2.5 0 4.2-3.3 17.7-15.3 17.7-28.5 0-10.6-8.5-19.1-19-19.1z m0 27c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path></svg>'
             });
-            var marker = L.marker(latLng, {icon: myIcon});
-            marker.propertyId = property.Id;
-            marker.on("click", function(event) {
-                this.dispatchEvent(
+            let marker = L.marker(latLng, {icon: myIcon});
+            marker.property = property;
+            marker.on("click", function(evt) {
+                _this.dispatchEvent(
                     new CustomEvent("propertySelected", {
                         cancelable: true,
                         composed: true,
                         bubbles: true,
-                        detail: property // TODO: Maybe need to look up prop by ID
+                        detail: evt.target.property
                     })
                 );
             });
@@ -134,8 +137,8 @@ export default class PropertyListMap extends LightningElement {
         filters = this.normalizeFilters(filters);
 
         // Get properties from the server
-        getPropertyList(filters).then(data => {
-            this.renderMap(data.properties);
+        getPropertyList(filters).then(properties => {
+            this.renderMap(properties);
         }).catch(() => {
             //TODO: implement error handling
         });

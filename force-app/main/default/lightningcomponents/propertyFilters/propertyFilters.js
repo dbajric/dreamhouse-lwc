@@ -40,7 +40,7 @@ export default class PropertyFilters extends LightningElement {
      */
     onMinBedroomsChange(evt) {
         evt.stopPropagation();
-        this.minBedrooms = evt.detail.value;
+        this.minBedrooms = Number(evt.detail.value);
         this.dispatchFiltersChanged();
     }
 
@@ -50,7 +50,7 @@ export default class PropertyFilters extends LightningElement {
      */
     onMinBathroomsChange(evt) {
         evt.stopPropagation();
-        this.minBathrooms = evt.detail.value;
+        this.minBathrooms = Number(evt.detail.value);
         this.dispatchFiltersChanged();
     }
 
