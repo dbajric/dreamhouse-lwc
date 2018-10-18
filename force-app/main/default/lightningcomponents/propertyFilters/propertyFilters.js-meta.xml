@@ -4,7 +4,5 @@
     <isExposed>false</isExposed>
     <tags>
         <tag>lightning__AppPage</tag>
-        <tag>lightning__RecordPage</tag>
-        <tag>lightning__HomePage</tag>
     </tags>
 </LightningComponentBundle>
