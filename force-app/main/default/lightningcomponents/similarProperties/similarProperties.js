@@ -1,9 +1,26 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement, api, track, wire } from "lwc";
+import { showToast } from "lightning/notificationsLibrary";
+import { getRecord } from "lightning/uiRecordApi";
 import getSimilarProperties from "@salesforce/apex/PropertyController.getSimilarProperties";
 
+const fields = ["Property__c.Price__c", "Property__c.Beds__c"];
+
 export default class SimilarProperties extends LightningElement {
+    @api recordId;
     @track properties;
-    @track title = "Similar Properties by Price";
+
+    @wire(getRecord, { recordId: "$recordId", fields: fields })
+    wiredRecord({ error, data }) {
+        if (error) {
+            showToast({
+                title: "Error loading current Property record.",
+                message: error.message,
+                variant: "error"
+            });
+        } else if (data) {
+            this.findSimilarProperties(data.fields);
+        }
+    }
 
     connectedCallback() {
         this.onPropertySelectedCallback = this.onPropertySelected.bind(this);
@@ -19,8 +36,7 @@ export default class SimilarProperties extends LightningElement {
      * @param {Event} evt change event.
      */
     onPropertySelected(evt) {
-        let property = evt.detail;
-        this.findSimilarProperties(property);
+        this.recordId = evt.detail.Id;
     }
 
     /**
@@ -30,16 +46,20 @@ export default class SimilarProperties extends LightningElement {
     findSimilarProperties(property) {
         let filters = {
             propertyId: property.Id,
-            price: property.Price__c,
-            bedrooms: property.Beds__c,
+            price: property.Price__c.value,
+            bedrooms: property.Beds__c.value,
             searchCriteria: ""
         };
 
         // Get properties from the server
         getSimilarProperties(filters).then(response => {
             this.properties = response;
-        }).catch(() => {
-            //TODO: implement error handling
+        }).catch((error) => {
+            showToast({
+                title: "Error loading similar properties.",
+                message: error.message,
+                variant: "error"
+            });
         });
     }
 }
