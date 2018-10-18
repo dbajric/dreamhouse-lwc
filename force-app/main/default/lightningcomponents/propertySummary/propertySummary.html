@@ -3,38 +3,38 @@
         <div slot="actions">
             <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="Edit Record" onclick={editProperty}></lightning-button-icon>
         </div>
-        <div if:false={hasProperty}>
+        <div if:false={property}>
             <div class="select slds-text-color--weak">
-                Select a property to see details here
+                Select a property to see details here.
             </div>
         </div>
-        <div if:true={hasProperty}>
+        <div if:true={property}>
             <lightning-layout vertical-align="center">
                 <lightning-layout-item padding="horizontal-small">
-                    <div if:true={hasPropertyThumbnail}>
-                        <img src={property.Thumbnail__c} class="property-pic" />
+                    <div if:true={property.Thumbnail__c}>
+                        <img src={property.Thumbnail__c.value} class="property-pic" />
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item>
                     <div>
-                        <lightning-formatted-address street={property.Address__c} city={property.City__c} province={property.State__c} postal-code={property.Zip__c}></lightning-formatted-address>
-                        <p>Beds: {property.Beds__c} Baths: {property.Baths__c}</p>
-                        <p><lightning-formatted-number value={property.Price__c} style="currency" currency-code="USD" minimum-fraction-digits="0" maximum-fraction-digits="0"></lightning-formatted-number></p>
+                        <lightning-formatted-address street={property.Address__c.value} city={property.City__c.value} province={property.State__c.value} postal-code={property.Zip__c.value}></lightning-formatted-address>
+                        <p>Beds: {property.Beds__c.value} Baths: {property.Baths__c.value}</p>
+                        <p><lightning-formatted-number value={property.Price__c.value} style="currency" currency-code="USD" minimum-fraction-digits="0" maximum-fraction-digits="0"></lightning-formatted-number></p>
                     </div>
                 </lightning-layout-item>
             </lightning-layout>
             <lightning-layout vertical-align="center">
                 <lightning-layout-item padding="around-small">
-                    <div if:true={hasBrokerPicture}>
-                        <img src={property.Broker__r.Picture__c} class="broker-pic" />
+                    <div if:true={broker.Picture__c}>
+                        <img src={broker.Picture__c.value} class="broker-pic" />
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item>
                     <div class="broker">
-                        <p><a onclick={navigateToBrokerRecord}>{property.Broker__r.Name}</a></p>
-                        <p>{property.Broker__r.Title__c}</p>
-                        <p>{property.Broker__r.Mobile_Phone__c}</p>
-                        <p>{property.Broker__r.Email__c}</p>
+                        <p><a onclick={navigateToBrokerRecord}>{broker.Name.value}</a></p>
+                        <p>{broker.Title__c.value}</p>
+                        <p>{broker.Mobile_Phone__c.value}</p>
+                        <p>{broker.Email__c.value}</p>
                     </div>
                 </lightning-layout-item>
             </lightning-layout>
