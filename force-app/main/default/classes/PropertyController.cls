@@ -71,7 +71,7 @@ global with sharing class PropertyController {
         ];
     }
 
-    @AuraEnabled
+    @AuraEnabled(Cacheable=true)
     public static List<Property__c> getSimilarProperties (Id propertyId, Decimal bedrooms, Decimal price, String searchCriteria) {
         if (searchCriteria == 'Bedrooms') {
             return [
@@ -86,7 +86,7 @@ global with sharing class PropertyController {
         }
     }
 
-    @AuraEnabled
+    @AuraEnabled(Cacheable=true)
     public static List<ContentVersion> getPictures (Id propertyId) {
 
         List<ContentDocumentLink> links = [select id, LinkedEntityId, ContentDocumentId from ContentDocumentLink where LinkedEntityId=:propertyId];
