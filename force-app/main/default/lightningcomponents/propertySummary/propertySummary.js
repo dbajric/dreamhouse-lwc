@@ -74,7 +74,7 @@ export default class PropertySummary extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: "standard__recordPage",
             attributes: {
-                recordId: this.property.Id,
+                recordId: this.property.Id.value,
                 actionName: "edit",
             },
         });
@@ -90,7 +90,7 @@ export default class PropertySummary extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: "standard__recordPage",
             attributes: {
-                recordId: this.broker.Id,
+                recordId: this.broker.Id.value,
                 actionName: "view",
             },
         });

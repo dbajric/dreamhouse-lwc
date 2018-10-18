@@ -7,4 +7,11 @@
         <tag>lightning__RecordPage</tag>
         <tag>lightning__HomePage</tag>
     </tags>
+    <tagConfigs>
+    <tagConfig tags="lightning__RecordPage">
+        <objects>
+            <object>Property__c</object>
+        </objects>
+    </tagConfig>
+    </tagConfigs>
 </LightningComponentBundle>
