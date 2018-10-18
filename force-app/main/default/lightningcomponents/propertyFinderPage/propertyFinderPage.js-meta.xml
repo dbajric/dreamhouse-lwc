@@ -3,8 +3,8 @@
     <apiVersion>45.0</apiVersion>
     <isExposed>false</isExposed>
     <tags>
-    	<tag>lightning__AppHome</tag>
-    	<tag>lightning__RecordHome</tag>
-        <tag>lightning__Home</tag>
+        <tag>lightning__AppPage</tag>
+        <tag>lightning__RecordPage</tag>
+        <tag>lightning__HomePage</tag>
     </tags>
 </LightningComponentBundle>
