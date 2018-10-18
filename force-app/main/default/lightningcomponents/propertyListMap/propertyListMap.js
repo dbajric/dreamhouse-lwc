@@ -1,4 +1,5 @@
 import { LightningElement } from "lwc";
+import { showToast } from "lightning/notificationsLibrary";
 import { loadStyle, loadScript } from "c/utils";
 import leaflet from "@salesforce/resourceUrl/leaflet";
 import getPropertyList from "@salesforce/apex/PropertyController.getPropertyList";
@@ -139,8 +140,12 @@ export default class PropertyListMap extends LightningElement {
         // Get properties from the server
         getPropertyList(filters).then(properties => {
             this.renderMap(properties);
-        }).catch(() => {
-            //TODO: implement error handling
+        }).catch((error) => {
+            showToast({
+                title: "Error loading properties",
+                message: error.message,
+                variant: "error"
+            });
         });
     }
 }
