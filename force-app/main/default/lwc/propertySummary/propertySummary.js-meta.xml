@@ -8,7 +8,7 @@
         <target>lightning__HomePage</target>
     </targets>
     <targetConfigs>
-    <targetConfig target="lightning__RecordPage">
+    <targetConfig targets="lightning__RecordPage">
         <objects>
             <object>Property__c</object>
         </objects>
