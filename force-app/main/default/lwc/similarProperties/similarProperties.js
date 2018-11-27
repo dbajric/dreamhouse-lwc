@@ -1,5 +1,5 @@
 import { LightningElement, api, track, wire } from "lwc";
-import { showToast } from "lightning/notificationsLibrary";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { getRecord } from "lightning/uiRecordApi";
 import getSimilarProperties from "@salesforce/apex/PropertyController.getSimilarProperties";
 
@@ -12,11 +12,13 @@ export default class SimilarProperties extends LightningElement {
     @wire(getRecord, { recordId: "$recordId", fields: fields })
     wiredRecord({ error, data }) {
         if (error) {
-            showToast({
-                title: "Error loading current Property record.",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading current Property record.",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         } else if (data) {
             this.findSimilarProperties(data.fields);
         }
@@ -55,11 +57,13 @@ export default class SimilarProperties extends LightningElement {
         getSimilarProperties(filters).then(response => {
             this.properties = response;
         }).catch((error) => {
-            showToast({
-                title: "Error loading similar properties.",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading similar properties",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         });
     }
 }

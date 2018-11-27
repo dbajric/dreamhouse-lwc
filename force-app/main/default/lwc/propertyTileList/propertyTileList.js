@@ -1,5 +1,5 @@
 import { LightningElement, track } from "lwc";
-import { showToast } from "lightning/notificationsLibrary";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import getPropertyListPage from "@salesforce/apex/PropertyController.getPropertyListPage";
 
 const DEFAULT_SEARCH_KEY = "";
@@ -126,11 +126,13 @@ export default class PropertyTileList extends LightningElement {
             this.page = data.pageNumber;
             this.pages = Math.ceil(this.total / filters.pageSize);
         }).catch((error) => {
-            showToast({
-                title: "Error loading properties",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading properties",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         });
     }
 }

@@ -1,5 +1,5 @@
 import { LightningElement, api, track, wire } from "lwc";
-import { showToast } from "lightning/notificationsLibrary";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { getRecord } from "lightning/uiRecordApi";
 
 const fields = ["Property__c.Date_Listed__c", "Property__c.Days_On_Market__c"];
@@ -16,11 +16,13 @@ export default class PropertyDaysOnMarketChart extends LightningElement {
     @wire(getRecord, { recordId: "$recordId", fields: fields })
     wiredRecord({ error, data }) {
         if (error) {
-            showToast({
-                title: "Error loading selected Property.",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading selected Property.",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         } else if (data) {
             let property = data.fields;
             this.daysOnMarket = property.Days_On_Market__c.value;

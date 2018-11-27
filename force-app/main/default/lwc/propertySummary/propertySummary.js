@@ -1,6 +1,6 @@
 import { LightningElement, api, track, wire } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
-import { showToast } from "lightning/notificationsLibrary";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { getRecord } from "lightning/uiRecordApi";
 
 // TODO W-5180125 - temporary workaround for mixins
@@ -36,11 +36,13 @@ export default class PropertySummary extends NavigationMixin(LightningElement) {
     @wire(getRecord, { recordId: "$recordId", fields: fields })
     wiredRecord({ error, data }) {
         if (error) {
-            showToast({
-                title: "Error loading selected Property.",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading selected Property",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         } else if (data) {
             this.property = data.fields;
             this.broker = data.fields.Broker__r.value.fields;

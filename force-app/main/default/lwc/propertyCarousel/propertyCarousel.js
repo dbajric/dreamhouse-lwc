@@ -1,5 +1,5 @@
 import { LightningElement, track, api, wire } from "lwc";
-import { showToast } from "lightning/notificationsLibrary";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { getRecord } from "lightning/uiRecordApi";
 import getPictures from "@salesforce/apex/PropertyController.getPictures";
 
@@ -17,11 +17,13 @@ export default class PropertyCarousel extends LightningElement {
     @wire(getRecord, { recordId: "$recordId", fields: fields })
     wiredRecord({ error, data }) {
         if (error) {
-            showToast({
-                title: "Error loading pictures",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading selected Property",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         } else if (data) {
             this.property = data.fields;
         }
@@ -30,11 +32,13 @@ export default class PropertyCarousel extends LightningElement {
     @wire(getPictures, { propertyId: "$recordId" })
     wiredPictures({ error, data }) {
         if (error) {
-            showToast({
-                title: "Error loading pictures",
-                message: error.message,
-                variant: "error"
-            });
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error loading pictures",
+                    message: error.message,
+                    variant: "error"
+                })
+            );
         } else if (data) {
             this.files = data;
             if (Array.isArray(this.files) && this.files.length > 0) {
