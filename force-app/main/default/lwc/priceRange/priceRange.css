@@ -1,6 +1,7 @@
 :host {
     display: block;
     margin-top: 6px;
+    padding-bottom: 6px;
 }
 
 .slider {
