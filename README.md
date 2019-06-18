@@ -1,8 +1,10 @@
 # DreamHouse Sample Application
 
-[![CircleCI](https://circleci.com/gh/dreamhouseapp/dreamhouse-sfdx.svg?style=svg)](https://circleci.com/gh/dreamhouseapp/dreamhouse-sfdx)
-
 Dreamhouse is a sample application for the real estate business built on the Salesforce platform. It allows brokers to manage their properties and customers to find their dream house.
+
+> NOTE: This is not the development repo for DreamHouse app but a version whose only purpose was to analyze performance.
+>
+> The development repo is located here: https://github.com/dreamhouseapp/dreamhouse-lwc
 
 ## Table of contents
 
